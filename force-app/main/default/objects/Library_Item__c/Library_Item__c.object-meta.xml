@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Library Item</label>
+    <pluralLabel>Library Items</pluralLabel>
+    <nameField>
+        <label>Library Item Name</label>
+        <type>Text</type>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>Type__c</fullName>
+        <label>Type</label>
+        <type>Picklist</type>
+        <picklist>
+            <values>
+                <fullName>Book</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AV Equipment</fullName>
+                <default>false</default>
+            </values>
+        </picklist>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <label>Status</label>
+        <type>Picklist</type>
+        <picklist>
+            <values>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Checked Out</fullName>
+                <default>false</default>
+            </values>
+        </picklist>
+    </fields>
+    <fields>
+        <fullName>Barcode__c</fullName>
+        <label>Barcode</label>
+        <type>Text</type>
+        <length>255</length>
+    </fields>
+</CustomObject>
