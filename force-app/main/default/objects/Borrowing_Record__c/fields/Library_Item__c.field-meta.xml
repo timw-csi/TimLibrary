@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="https://soap.sforce.com/2006/04/metadata">
+  <fullName>Library_Item__c</fullName>
+  <label>Library Item</label>
+  <type>MasterDetail</type>
+  <referenceTo>Library_Item__c</referenceTo>
+  <relationshipLabel>Borrowing Records</relationshipLabel>
+  <relationshipName>Borrowing_Records</relationshipName>
+  <required>true</required>
+</CustomField>
