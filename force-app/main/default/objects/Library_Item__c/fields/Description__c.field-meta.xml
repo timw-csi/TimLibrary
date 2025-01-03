@@ -1,0 +1,6 @@
+<CustomField xmlns="https://soap.sforce.com/2006/04/metadata">
+    <fullName>Description__c</fullName>
+    <label>Description</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>
