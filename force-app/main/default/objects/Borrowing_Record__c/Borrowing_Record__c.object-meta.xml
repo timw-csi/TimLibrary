@@ -9,5 +9,5 @@
     <displayFormat>BR-{0000}</displayFormat>
   </nameField>
   <deploymentStatus>Deployed</deploymentStatus>
-  <sharingModel>ReadWrite</sharingModel>
+  <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

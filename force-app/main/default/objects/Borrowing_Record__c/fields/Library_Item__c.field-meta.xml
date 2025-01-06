@@ -6,5 +6,4 @@
   <referenceTo>Library_Item__c</referenceTo>
   <relationshipLabel>Borrowing Records</relationshipLabel>
   <relationshipName>Borrowing_Records</relationshipName>
-  <required>true</required>
 </CustomField>

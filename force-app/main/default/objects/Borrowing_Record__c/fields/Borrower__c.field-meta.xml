@@ -3,8 +3,9 @@
   <fullName>Borrower__c</fullName>
   <label>Borrower</label>
   <type>Lookup</type>
-  <referenceTo>User</referenceTo>
+  <referenceTo>Library_Member__c</referenceTo>
   <relationshipLabel>Borrowing Records</relationshipLabel>
   <relationshipName>Borrowing_Records</relationshipName>
   <required>true</required>
+  <deleteConstraint>Restrict</deleteConstraint>
 </CustomField>
