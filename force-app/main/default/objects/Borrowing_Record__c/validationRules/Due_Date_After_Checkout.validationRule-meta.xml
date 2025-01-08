@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ValidationRule xmlns="https://soap.sforce.com/2006/04/metadata">
+  <fullName>Due_Date_After_Checkout</fullName>
+  <active>true</active>
+  <errorConditionFormula
+  >Due_Date__c &lt; Checkout_Date__c</errorConditionFormula>
+  <errorMessage>Due date must be after the checkout date.</errorMessage>
+  <description>Ensures due date is after checkout date</description>
+</ValidationRule>

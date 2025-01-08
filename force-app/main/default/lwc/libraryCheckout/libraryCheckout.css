@@ -1,0 +1,8 @@
+.checkout-history {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.barcode-input {
+  font-size: 1.2rem;
+}
