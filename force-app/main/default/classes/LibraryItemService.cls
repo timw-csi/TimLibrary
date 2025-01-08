@@ -119,12 +119,12 @@ public static void processReturn(String barcode) {
         update item;
         
     } catch (QueryException e) {
-        String errorMsg = 'Item with barcode ' + barcode + ' not found.';
+        String errorMsg = 'Item with barcode ' + barcode + ' either not found or was checked out by another user.';
         AuraHandledException err = new AuraHandledException(errorMsg);
         err.setMessage(errorMsg);
         throw err;
     } catch (Exception e) {
         throw new AuraHandledException(e.getMessage());
     }
-}
+  }
 }

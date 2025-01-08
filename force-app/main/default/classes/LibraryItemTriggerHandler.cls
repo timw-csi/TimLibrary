@@ -1,3 +1,5 @@
+// This runs BEFORE a new library item is created
+// It checks if the barcode field is filled in
 public class LibraryItemTriggerHandler {
   public void beforeInsert(List<Library_Item__c> newItems) {
       // Ensure barcode present
