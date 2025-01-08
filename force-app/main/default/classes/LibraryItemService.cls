@@ -1,5 +1,5 @@
 public with sharing class LibraryItemService {
-  private static final Integer BORROWING_LIMIT = 5;
+  private static final Integer BORROWING_LIMIT = 3;
   
   @AuraEnabled(cacheable=false)
   public static void processCheckouts(List<String> barcodes) {
@@ -31,7 +31,10 @@ public with sharing class LibraryItemService {
               AND Status__c = 'Active'];
           
           if (currentBorrowings + barcodes.size() > BORROWING_LIMIT) {
-              throw new AuraHandledException('This checkout would exceed the borrowing limit of ' + BORROWING_LIMIT + ' items.');
+            String errorMsg = 'This checkout would exceed the borrowing limit of ' + BORROWING_LIMIT + ' items.';
+            AuraHandledException e = new AuraHandledException(errorMsg);
+            e.setMessage(errorMsg);
+            throw e;
           }
           
           // Create all borrowing records at once
@@ -41,10 +44,16 @@ public with sharing class LibraryItemService {
           for (String barcode : barcodes) {
               Library_Item__c item = itemsByBarcode.get(barcode);
               if (item == null) {
-                  throw new AuraHandledException('Item with barcode ' + barcode + ' not found.');
+                String errorMsg = 'Item with barcode ' + barcode + ' not found.';
+                AuraHandledException e = new AuraHandledException(errorMsg);
+                e.setMessage(errorMsg);
+                throw e;
               }
               if (item.Status__c != 'Available') {
-                  throw new AuraHandledException('Item ' + barcode + ' is not available for checkout.');
+                String errorMsg = 'Item ' + barcode + ' is not available for checkout.';
+                AuraHandledException e = new AuraHandledException(errorMsg);
+                e.setMessage(errorMsg);
+                throw e;
               }
               
               recordsToInsert.add(new Borrowing_Record__c(
@@ -110,9 +119,12 @@ public static void processReturn(String barcode) {
         update item;
         
     } catch (QueryException e) {
-        throw new AuraHandledException('Unable to process return. Please verify the item was checked out to you.');
+        String errorMsg = 'Item with barcode ' + barcode + ' either not found or was checked out by another user.';
+        AuraHandledException err = new AuraHandledException(errorMsg);
+        err.setMessage(errorMsg);
+        throw err;
     } catch (Exception e) {
         throw new AuraHandledException(e.getMessage());
     }
-}
+  }
 }
