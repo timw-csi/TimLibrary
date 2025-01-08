@@ -17,11 +17,6 @@
                 <default>false</default>
                 <label>Checked Out</label>
             </value>
-            <value>
-                <fullName>Under Maintenance</fullName>
-                <default>false</default>
-                <label>Under Maintenance</label>
-            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

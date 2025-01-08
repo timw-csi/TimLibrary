@@ -1,0 +1,58 @@
+<!-- libraryItemBrowser.html -->
+<template>
+  <lightning-card title="Library Item Browser" icon-name="standard:asset_object">
+
+    <!-- Search and Filter Section -->
+    <div class="slds-p-around_medium">
+      <lightning-layout multiple-rows>
+        <!-- Search Input -->
+        <lightning-layout-item size="12" padding="around-small">
+          <lightning-input type="search" label="Search Items" placeholder="Enter item name or barcode..."
+            onchange={handleSearchChange}>
+          </lightning-input>
+        </lightning-layout-item>
+
+        <!-- Filters -->
+        <lightning-layout-item size="6" padding="around-small">
+          <lightning-combobox label="Item Type" value={selectedType} options={typeOptions} onchange={handleTypeChange}>
+          </lightning-combobox>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="6" padding="around-small">
+          <lightning-combobox label="Status" value={selectedStatus} options={statusOptions}
+            onchange={handleStatusChange}>
+          </lightning-combobox>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+
+    <!-- Results Table -->
+    <div class="slds-p-around_medium">
+      <template if:true={items}>
+        <lightning-datatable key-field="Id" data={items} columns={columns} hide-checkbox-column>
+        </lightning-datatable>
+
+        <!-- No Results Message -->
+        <template if:true={noResults}>
+          <div class="slds-align_absolute-center slds-p-around_medium">
+            No items found matching your criteria
+          </div>
+        </template>
+      </template>
+
+      <!-- Loading State -->
+      <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+      </template>
+    </div>
+
+    <!-- Error Message -->
+    <template if:true={error}>
+      <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+        <span class="slds-assistive-text">error</span>
+        <h2>{error}</h2>
+      </div>
+    </template>
+
+  </lightning-card>
+</template>
